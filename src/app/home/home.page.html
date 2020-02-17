@@ -12,46 +12,39 @@
     <ion-row>
       <ion-col>
         <ion-item>
-          <ion-input placeholder="Enter Name" [(ngModel)]="studentName"></ion-input>
-        </ion-item>
-      </ion-col>
-      <ion-col>
-        <ion-item>
-          <ion-input placeholder="Enter Age" [(ngModel)]="studentAge"></ion-input>
-        </ion-item>
-      </ion-col>
-      <ion-col>
-        <ion-item>
-          <ion-input placeholder="Enter Address" [(ngModel)]="studentAddress"></ion-input>
+          <ion-input placeholder="Enter Item" [(ngModel)]="studentItem"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
     <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-input placeholder="Enter Quantidade" [(ngModel)]="studentQuantidade"></ion-input>
+        </ion-item>
+      </ion-col>
+      </ion-row>
+      <ion-row>
       <ion-col text-center>
-        <ion-button (click)="CreateRecord()" [disabled]="!studentName || !studentAge || !studentAddress">
+        <ion-button (click)="CreateRecord()" [disabled]="!studentItem || !studentQuantidade">
           <ion-icon size="small" slot="icon-only" name="add"></ion-icon>
-          &nbsp;Create Record
+          &nbsp;Novo Item
         </ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
-
-
   <ion-card *ngFor="let item of students">
     <span *ngIf="!item.isEdit; else elseBlock">
       <ion-card-header>
-        <ion-card-title>{{item.Name}} of {{item.Age}} years</ion-card-title>
-        <ion-card-subtitle>From: {{item.Address}}</ion-card-subtitle>
+        <ion-card-title>{{item.Item}}</ion-card-title>
+        <ion-card-subtitle>Quantidade: {{item.Quantidade}}</ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
-
         <ion-button shape="round" color="secondary" size="small" (click)="EditRecord(item)">
           <ion-icon size="small" slot="icon-only" name="create"></ion-icon>
-
         </ion-button>
+
         <ion-button shape="round" color="danger" size="small" (click)="RemoveRecord(item.id)">
           <ion-icon size="small" slot="icon-only" name="trash"></ion-icon>
-
         </ion-button>
       </ion-card-content>
     </span>
@@ -80,15 +73,11 @@
       <ion-card-content>
         <ion-item>
           <ion-label><strong>Name</strong></ion-label>
-          <ion-input type="text" [(ngModel)]="item.EditName"></ion-input>
+          <ion-input type="text" [(ngModel)]="item.EditItem"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label><strong>Age</strong></ion-label>
-          <ion-input type="text" [(ngModel)]="item.EditAge"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label><strong>Address</strong></ion-label>
-          <ion-input type="text" [(ngModel)]="item.EditAddress"></ion-input>
+          <ion-label><strong>Quantidade</strong></ion-label>
+          <ion-input type="text" [(ngModel)]="item.EditQuantidade"></ion-input>
         </ion-item>
       </ion-card-content>
     </ng-template>
